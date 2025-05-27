@@ -22,11 +22,18 @@ def clear_logs():
 
 from pathlib import Path
 import subprocess
-from PyQt5.QtWidgets import QMessageBox, QPushButton, QVBoxLayout, QWidget, QApplication
+from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox, QPushButton, QVBoxLayout # type: ignore
 import sys
 import json
 import csv
 import datetime
+
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 block_cipher = None
 
